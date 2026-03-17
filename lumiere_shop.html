@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIÈRE — 化粧品</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="main.js"></script>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner">
+  新規会員登録で <span>¥1,000 OFF</span> &ensp;|&ensp; ¥8,000以上で <span>送料無料</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">Lumi<span>ère</span></div>
+  <nav>
+    <a class="active" onclick="filterProducts('all')">すべて</a>
+    <a onclick="filterProducts('skin')">スキンケア</a>
+    <a onclick="filterProducts('base')">ベースメイク</a>
+    <a onclick="filterProducts('lips')">リップ</a>
+    <a onclick="filterProducts('body')">ボディケア</a>
+  </nav>
+  <div class="header-right">
+    <button class="cart-btn" onclick="openCart()">
+      カート
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">2025 Spring Collection</p>
+    <h1 class="hero-title">あなたの肌に<br><em>輝きを</em></h1>
+    <p class="hero-desc">厳選された天然成分と最新の科学技術が融合した、プレミアムスキンケア＆コスメブランド。</p>
+    <button class="btn-primary" onclick="filterProducts('all'); document.querySelector('.section').scrollIntoView({behavior:'smooth'})">コレクションを見る</button>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-circle">
+      <div class="hero-inner">Beauté<br>Naturelle</div>
+    </div>
+    <div class="hero-tag">Spring 2025</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title" id="sectionTitle">人気商品</h2>
+    <span class="section-link" id="productCount"></span>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon">✦</div>
+    <div class="feature-title">送料無料</div>
+    <div class="feature-desc">¥8,000以上のご注文</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">◈</div>
+    <div class="feature-title">即日発送</div>
+    <div class="feature-desc">平日14時までのご注文</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">◇</div>
+    <div class="feature-title">30日返品保証</div>
+    <div class="feature-desc">安心してお買い物</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">❋</div>
+    <div class="feature-title">天然成分</div>
+    <div class="feature-desc">パラベンフリー処方</div>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>カート</h2>
+    <button class="close-btn" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-wrap" id="modalWrap">
+  <div class="modal">
+    <div class="modal-icon">✦</div>
+    <h2 class="modal-title">ご注文ありがとうございます</h2>
+    <p class="modal-sub">ご注文を承りました。<br>確認メールをお送りします。<br>通常2〜4営業日でお届けいたします。</p>
+    <button class="modal-close" onclick="closeModal()">ショッピングを続ける</button>
+  </div>
+</div>
+
+</body>
+</html>
