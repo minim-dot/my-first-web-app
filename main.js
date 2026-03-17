@@ -1,13 +1,14 @@
 
 const products = [
-  { id:1, name:'モイスチャーリフト セラム', brand:'LUMIÈRE', price:7800, category:'skin', emoji:'🧴', bg:'#F5EDE8', badge:'ベストセラー', desc:'ヒアルロン酸×レチノール 高浸透美容液' },
-  { id:2, name:'ローズ グロウ ファンデーション', brand:'LUMIÈRE', price:6200, category:'base', emoji:'💄', bg:'#F0E8F0', badge:'新作', desc:'SPF30 PA++ 軽いつけ心地の素肌感ファンデ' },
-  { id:3, name:'ベルベット リップ カラー', brand:'LUMIÈRE', price:3800, category:'lips', emoji:'💋', bg:'#FAEBE8', badge:null, desc:'マットな仕上がり 6時間持続処方' },
-  { id:4, name:'シルクボディローション', brand:'LUMIÈRE', price:5500, category:'body', emoji:'🌸', bg:'#EBF0E8', badge:'人気No.1', desc:'桜エキス配合 しっとりなめらか素肌へ' },
-  { id:5, name:'アクア バランシング クリーム', brand:'LUMIÈRE', price:9800, category:'skin', emoji:'✨', bg:'#E8EEF5', badge:null, desc:'敏感肌・混合肌向け 24時間保湿クリーム' },
-  { id:6, name:'グロスフィニッシュ コンシーラー', brand:'LUMIÈRE', price:4200, category:'base', emoji:'🪞', bg:'#F5F0E8', badge:null, desc:'カバー力◎ 自然なツヤ肌に' },
-  { id:7, name:'プランプ グロス リップ', brand:'LUMIÈRE', price:3200, category:'lips', emoji:'🍑', bg:'#FEF0E8', badge:'新作', desc:'プランピング効果 うるうる艶リップ' },
-  { id:8, name:'アロマバスエッセンス', brand:'LUMIÈRE', price:4800, category:'body', emoji:'🛁', bg:'#E8F5F0', badge:null, desc:'ローズ＆ジャスミンの香り リラックスバスタイム' },
+  { id:1, name:'モイスチャーリフト セラム', brand:'LUMIÈRE', price:7800, category:'skin', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#F5EDE8', badge:'ベストセラー', desc:'ヒアルロン酸×レチノール 高浸透美容液' },
+  { id:2, name:'ローズ グロウ ファンデーション', brand:'LUMIÈRE', price:6200, category:'base', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#F0E8F0', badge:'新作', desc:'SPF30 PA++ 軽いつけ心地の素肌感ファンデ' },
+  { id:3, name:'ベルベット リップ カラー', brand:'LUMIÈRE', price:3800, category:'lips', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#FAEBE8', badge:null, desc:'マットな仕上がり 6時間持続処方' },
+  { id:4, name:'シルクボディローション', brand:'LUMIÈRE', price:5500, category:'body', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#EBF0E8', badge:'人気No.1', desc:'桜エキス配合 しっとりなめらか素肌へ' },
+  { id:5, name:'アクア バランシング クリーム', brand:'LUMIÈRE', price:9800, category:'skin', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#E8EEF5', badge:null, desc:'敏感肌・混合肌向け 24時間保湿クリーム' },
+  { id:6, name:'グロスフィニッシュ コンシーラー', brand:'LUMIÈRE', price:4200, category:'base', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#F5F0E8', badge:null, desc:'カバー力◎ 自然なツヤ肌に' },
+  { id:7, name:'プランプ グロス リップ', brand:'LUMIÈRE', price:3200, category:'lips', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#FEF0E8', badge:'新作', desc:'プランピング効果 うるうる艶リップ' },
+  { id:8, name:'アロマバスエッセンス', brand:'LUMIÈRE', price:4800, category:'body', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#E8F5F0', badge:null, desc:'ローズ＆ジャスミンの香り リラックスバスタイム' },
+  { id:9, name:'アロマバスエッセンス', brand:'LUMIÈRE', price:4800, category:'body', image:'https://anttiq.com/wp-content/uploads/2021/02/IMG_0275.png', bg:'#e8e9f5', badge:null, desc:'ローズ＆ジャスミンの香り リラックスバスタイム' },
 ];
 
 let cart = [];
@@ -34,7 +35,7 @@ function renderProducts() {
     <div class="product-card">
       <div class="product-img" style="background:${p.bg}">
         <div class="product-placeholder">
-          <div class="product-icon" style="background:rgba(255,255,255,0.6)">${p.emoji}</div>
+          ${p.image ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : '<div class="product-icon" style="background:rgba(255,255,255,0.6)">画像未設定</div>'}
         </div>
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
       </div>
@@ -86,7 +87,7 @@ function renderCart() {
   }
   container.innerHTML = cart.map(item => `
     <div class="cart-item">
-      <div class="cart-item-img">${item.emoji}</div>
+      <div class="cart-item-img">${item.image ? `<img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;">` : '画像'}</div>
       <div class="cart-item-info">
         <div class="cart-item-brand">${item.brand}</div>
         <div class="cart-item-name">${item.name}</div>
